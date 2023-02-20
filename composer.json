@@ -2,7 +2,7 @@
     "name": "lai/poker",
     "description": "generate poker data.",
     "type": "library",
-    "license": "Apache License 2.0",
+    "license": "Apache-2.0",
     "keywords": [
         "poker",
         "gylr"
