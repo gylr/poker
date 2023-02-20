@@ -1,0 +1,22 @@
+{
+    "name": "lai/poker",
+    "description": "generate poker data.",
+    "type": "library",
+    "license": "Apache2.0",
+    "keywords": [
+        "poker",
+        "gylr"
+    ],
+    "authors": [
+        {
+            "name": "gylr0505",
+            "email": "gylr0505@163.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Lai\\Poker\\": "src/"
+        }
+    },
+}
