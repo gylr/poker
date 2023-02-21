@@ -15,6 +15,14 @@ namespace lai\poker\landlord\rules;
 use lai\poker\landlord\Card;
 use lai\poker\landlord\traits\TraitSequence;
 
+/**
+ * an extra pair is attached to each triplet.
+ * Only the triplets have to be in sequence - for example 8-8-8-9-9-9-4-4-J-J.
+ * The pairs must be different in rank from each other and from all the triplets.
+ * Although triplets of twos cannot be included, twos can be attached.
+ * Note that attached single cards and attached pairs cannot be mixed - for example 3-3-3-4-4-4-6-7-7 is not valid.
+ * 三带一对，不含双王，不含有炸
+ */
 class SequenceTripletWithPair extends AbstractBaseRule
 {
     use TraitSequence;
