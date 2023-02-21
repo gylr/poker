@@ -22,13 +22,13 @@ abstract class AbstractBaseRule implements RulesInterface
 
     protected array $numbers = [];
 
-    protected object $poker;
+    protected array $data = [];
 
     public function __construct($numbers = [])
     {
         $this->numbers = Number::create($numbers)->filter()->get();
         $this->count = count($this->numbers);
-        $this->poker = Poker::create($this->numbers);
+        $this->data  = Poker::create($this->numbers)->handle()->getData();
     }
 
     public function get(): array
@@ -38,7 +38,7 @@ abstract class AbstractBaseRule implements RulesInterface
 
     public function getData(): array
     {
-        return $this->poker->handle()->getData();
+        return $this->data;
     }
 
     public function getLabel(): string
