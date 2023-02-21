@@ -11,24 +11,29 @@
 declare (strict_types = 1);
 
 namespace lai\poker\landlord\rules;
-use lai\poker\landlord\Card;
 
-/**
- * two cards of the same rank, from three (low) up to two (high)
- * 对子
- */
-class Pair extends AbstractBaseRule
+use lai\poker\landlord\traits\TraitSequence;
+
+class Sequence extends AbstractBaseRule
 {
-    protected string $label = 'p';
+    use TraitSequence;
+
+    protected string $label = 'ss';
 
     public function is(): bool
     {
-        if ($this->count !== 2){
+        // 最少5张，最多12张
+        if ($this->count < 5 || $this->count > 12){
             return false;
         }
-
-        list($first, $second) = array_column($this->data, Card::POINT);
-        return strcmp($first, $second) === 0;
+        if ($this->isContainTrumps()) {
+            return false;
+        }
+        if (!$this->isSequence()){
+            return false;
+        }
+        $this->unit = 1;
+        return $this->isLevelsSumEqual();
     }
 
 }

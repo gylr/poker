@@ -17,6 +17,10 @@ class Number
     const BEGIN_NUMBER = 1;
     //卡牌编号的结束值
     const END_NUMBER = 54;
+    // 对于顺子，最小的层级为1，对应的点数为3
+    const MIN_SEQUENCE_LEVEL = 1;
+    //对于顺子，最小的层级为12，对应的点数为A
+    const MAX_SEQUENCE_LEVEL = 12;
 
     /**
      * @var array|string 为出的牌序号

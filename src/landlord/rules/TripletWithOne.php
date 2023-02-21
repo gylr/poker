@@ -12,6 +12,8 @@ declare (strict_types = 1);
 
 namespace lai\poker\landlord\rules;
 
+use lai\poker\landlord\Card;
+
 /**
  *  a triplet with any single card added, for example 6-6-6-8.
  * These rank according to the rank of the triplet - so for example 9-9-9-3 beats 8-8-8-A.
@@ -26,7 +28,7 @@ class TripletWithOne extends AbstractBaseRule
         if ($this->count !== 4){
             return false;
         }
-        $points = array_column($this->data, 'point');
+        $points = array_column($this->data, Card::POINT);
         $count_values = array_count_values($points);
         // 只有两个不同的数字存在
         if (count($count_values) !== 2){

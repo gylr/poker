@@ -11,6 +11,8 @@
 declare (strict_types = 1);
 
 namespace lai\poker\landlord\rules;
+use lai\poker\landlord\Card;
+
 /**
  * three cards of the same rank
  * 三张完全一样， 不含有飞机或三带
@@ -25,7 +27,7 @@ class Triplet extends AbstractBaseRule
             return false;
         }
 
-        list($first, $second, $third) = array_column($this->data, 'point');
+        list($first, $second, $third) = array_column($this->data, Card::POINT);
         return $first === $second && $second === $third;
     }
 

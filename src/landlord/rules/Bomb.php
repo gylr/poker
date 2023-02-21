@@ -11,6 +11,8 @@
 declare (strict_types = 1);
 
 namespace lai\poker\landlord\rules;
+use lai\poker\landlord\Card;
+
 /**
  * four cards of the same rank.
  * A bomb can beat everything except a rocket, and a higher ranked bomb can beat a lower ranked one.
@@ -25,7 +27,7 @@ class Bomb extends AbstractBaseRule
         if ($this->count !== 4){
             return false;
         }
-        $points = array_count_values(array_column($this->data, 'point'));
+        $points = array_count_values(array_column($this->data, Card::POINT));
         sort($points);
         list($first) = $points;
         return 4 === $first;

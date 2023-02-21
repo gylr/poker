@@ -29,6 +29,12 @@ class Card
     const BLACK_JOKER_NUMBER = 53;
     // 大王的number
     const RED_JOKER_NUMBER = 54;
+    // 牌层级标记，不可修改
+    const LEVEL = 'level';
+    // 牌点数标记，不可修改
+    const POINT = 'point';
+    // 牌花色标记，不可修改
+    const DECOR = 'decor';
 
     /**
      * @var int 此卡的编号，按规则是固定的；
