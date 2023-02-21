@@ -13,6 +13,11 @@ namespace Lai\Poker\landlord;
 
 class Number
 {
+    //卡牌编号的开始值
+    const BEGIN_NUMBER = 1;
+    //卡牌编号的结束值
+    const END_NUMBER = 54;
+
     /**
      * @var array|string 为出的牌序号
      */
@@ -39,12 +44,12 @@ class Number
 
     public function filter(): self
     {
-        $this->data = array_filter($this->data, fn($number) => $number >= Card::BEGIN_NUMBER && $number <= Card::END_NUMBER);
+        $this->data = array_filter($this->data, fn($number) => $number >= self::BEGIN_NUMBER && $number <= self::END_NUMBER);
         $this->data = array_flip(array_flip($this->data));
         return $this;
     }
 
-    public function get()
+    public function get(): array
     {
         return $this->data;
     }

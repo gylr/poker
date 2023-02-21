@@ -15,10 +15,6 @@ namespace Lai\Poker\landlord;
  */
 class Card
 {
-    //卡牌编号的开始值
-    const BEGIN_NUMBER = 1;
-    //卡牌编号的结束值
-    const END_NUMBER = 54;
     //level 对应牌point，对于斗地主，顺序从小到大，不可修改
     const LEVEL_MAPS = [
         1 => '3','4','5','6','7','8','9','10','J','Q','K','A','2','BJ','RJ'
