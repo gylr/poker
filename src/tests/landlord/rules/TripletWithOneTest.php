@@ -27,6 +27,15 @@ class TripletWithOneTest extends TestCase
 
     public function testJoker()
     {
+        $numbers = [1,2,3,54];
+        $obj = new TripletWithOne($numbers);
+        $this->assertEquals(4, $obj->getCount(), '纸牌张数为4');
+        $this->assertEquals('to', $obj->getLabel(), '该规则标签为to');
+        $this->assertTrue($obj->is(), '有一个王，is()返回true');
+    }
+
+    public function testJokers()
+    {
         $numbers = [1,2,53,54];
         $obj = new TripletWithOne($numbers);
         $this->assertEquals(4, $obj->getCount(), '纸牌张数为4');
