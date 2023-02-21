@@ -15,30 +15,18 @@ namespace lai\poker\landlord\rules;
 use lai\poker\landlord\traits\TraitSequence;
 
 /**
- *at least five cards of consecutive rank, from 3 up to ace - for example 8-9-10-J-Q.
- * Twos and jokers cannot be used.
- * 顺子
+ * at least two triplets of consecutive ranks from three up to ace. For example 4-4-4-5-5-5.
+ * 三联体
  */
-class Sequence extends AbstractBaseRule
+class SequenceTriplet extends AbstractBaseRule
 {
     use TraitSequence;
 
-    protected string $label = 'ss';
+    protected string $label = 'st';
 
     public function is(): bool
     {
-        // 最少5张，最多12张
-        if ($this->count < 5 || $this->count > 12){
-            return false;
-        }
-        if ($this->isContainTrumps()) {
-            return false;
-        }
-        if (!$this->isSequence()){
-            return false;
-        }
-        $this->unit = 1;
-        return $this->isLevelsSumEqual();
+        return $this->isSequenceTripletNumbers();
     }
 
 }

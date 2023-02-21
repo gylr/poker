@@ -72,4 +72,26 @@ trait TraitSequence
     {
         return $this->isContainTwoPoint() || $this->isContainJoker();
     }
+
+    /**
+     * 对三联做独特的验证，其中不能含有主牌
+     * @return bool
+     */
+    public function isSequenceTripletNumbers(): bool
+    {
+        if ($this->count < 6 || $this->count % 3 !== 0){
+            return false;
+        }
+        if ($this->isContainTrumps()){
+            return false;
+        }
+        if (!$this->isSequence()){
+            return false;
+        }
+//        if (count($this->levels) < 1) {
+//            return false;
+//        }
+        $this->unit = 3;
+        return $this->isLevelsSumEqual();
+    }
 }

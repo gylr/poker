@@ -14,6 +14,11 @@ namespace lai\poker\landlord\rules;
 
 use lai\poker\landlord\traits\TraitSequence;
 
+/**
+ * at least three pairs of consecutive ranks, from 3 up to ace.
+ * Twos and jokers cannot be used. For example 10-10-J-J-Q-Q-K-K.
+ * 双连顺，最少单元素3个，牌最少6张
+ */
 class SequencePair extends AbstractBaseRule
 {
     use TraitSequence;
