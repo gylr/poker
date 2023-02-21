@@ -11,6 +11,9 @@
 declare(strict_types=1);
 namespace lai\poker\landlord\rules;
 
+use app\engine\Suits;
+use lai\poker\landlord\Card;
+use lai\poker\landlord\Decor;
 use lai\poker\landlord\Number;
 use lai\poker\landlord\Poker;
 
@@ -52,4 +55,14 @@ abstract class AbstractBaseRule implements RulesInterface
     }
 
     abstract public function is(): bool;
+
+    /**
+     * 是否同时含有双王
+     * @return bool
+     */
+    public function isBothJokers(): bool
+    {
+        $suits = array_column($this->data, 'suit');
+        return 2 === count(array_filter($suits, fn($suit)=> $suit === Decor::JOKER));
+    }
 }
