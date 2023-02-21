@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
-namespace Lai\Poker\tests\landlord;
+namespace lai\poker\tests\landlord;
 
-use Lai\Poker\landlord\Card;
+use lai\poker\landlord\Card;
 use PHPUnit\Framework\TestCase;
 
 class CardTest extends TestCase

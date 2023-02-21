@@ -14,14 +14,15 @@
         }
     ],
     "require": {
-        "php": ">=7.4.0"
+        "php": ">=7.4"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6"
     },
     "autoload": {
+        "files": [],
         "psr-4": {
-            "Lai\\Poker\\": "src/"
+            "lai\\poker\\": "src/"
         }
     }
 }

@@ -9,7 +9,7 @@
 // | Author: gylr0505 <gylr0505@163.com>
 // +----------------------------------------------------------------------
 declare(strict_types=1);
-namespace Lai\Poker\landlord;
+namespace lai\poker\landlord;
 /**
  * 生成一副牌，或已生成的牌，然后做牌的分发；
  * 对于已打乱的牌，可能是历史记录，按场景自行决定是否要洗牌（打乱）

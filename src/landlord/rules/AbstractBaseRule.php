@@ -9,42 +9,47 @@
 // | Author: gylr0505 <gylr0505@163.com>
 // +----------------------------------------------------------------------
 declare(strict_types=1);
-namespace lai\poker\landlord;
+namespace lai\poker\landlord\rules;
 
-class Poker
+use lai\poker\landlord\Number;
+use lai\poker\landlord\Poker;
+
+abstract class AbstractBaseRule implements RulesInterface
 {
-    protected array $data = [];
+    protected int $count = 0;
+
+    protected string $label = '';
+
     protected array $numbers = [];
 
-    public function __construct($numbers)
+    protected object $poker;
+
+    public function __construct($numbers = [])
     {
         $this->numbers = Number::create($numbers)->filter()->get();
-        $this->data = [];
+        $this->count = count($this->numbers);
+        $this->poker = Poker::create($this->numbers);
     }
 
-    public static function create($numbers = []): self
-    {
-        return new self($numbers);
-    }
-
-    public function handle(): self
-    {
-        $this->parseNumbersToCard();
-        return $this;
-    }
-
-    public function getNumbers(): array
+    public function get(): array
     {
         return $this->numbers;
     }
 
     public function getData(): array
     {
-        return $this->data;
+        return $this->poker->handle()->getData();
     }
 
-    protected function parseNumbersToCard(): void
+    public function getLabel(): string
     {
-        array_walk($this->numbers, fn($number, $key) => $this->data[$key] = Card::create((int)$number)->toArray());
+        return $this->label;
     }
+
+    public function getCount(): int
+    {
+        return $this->count;
+    }
+
+    abstract public function is(): bool;
 }

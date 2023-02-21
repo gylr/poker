@@ -9,7 +9,7 @@
 // | Author: gylr0505 <gylr0505@163.com>
 // +----------------------------------------------------------------------
 declare(strict_types=1);
-namespace Lai\Poker\landlord;
+namespace lai\poker\landlord;
 /**
  * 根据$number创建纸牌信息，含有点数point，花色decor，层级level
  */

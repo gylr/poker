@@ -9,7 +9,7 @@
 // | Author: gylr0505 <gylr0505@163.com>
 // +----------------------------------------------------------------------
 declare(strict_types=1);
-namespace Lai\Poker\landlord;
+namespace lai\poker\landlord;
 
 class Number
 {
