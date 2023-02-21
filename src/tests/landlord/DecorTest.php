@@ -9,7 +9,7 @@ class DecorTest extends TestCase
 {
     public function testGetAll()
     {
-        $this->assertEquals(4, count(Decor::getAll()),'应该为4种花色');
+        $this->assertCount(4, Decor::getAll(), '应该为4种花色');
     }
 
     public function testGenerateOne()
