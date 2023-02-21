@@ -21,6 +21,8 @@ trait TraitSequence
     protected int $unit = 1;
 
     protected array $levels = [];
+    // 附加的牌张数
+    protected int $attach_count = 0;
 
     public function isSequence(): bool
     {
@@ -93,5 +95,32 @@ trait TraitSequence
 //        }
         $this->unit = 3;
         return $this->isLevelsSumEqual();
+    }
+
+    /**
+     * 获取三联的纸牌numbers
+     * @return array
+     */
+    public function prepareTripletNumbers(): array
+    {
+        $levels = array_column($this->data, Card::LEVEL);
+        $number_to_level = array_column($this->data, Card::LEVEL,Card::NUMBER);
+        // 三联纸牌 level => count
+        $triplets = array_filter(array_count_values($levels),fn($count) => $count === 3);
+        return array_keys(array_filter($number_to_level, fn($level) => isset($triplets[$level])));
+    }
+
+    public function generateAttachCount(): int
+    {
+        $levels = array_column($this->data, 'level');
+        $level_to_count = array_count_values($levels);
+        return $this->attach_count = array_sum(
+            array_filter($level_to_count,fn($count) => $count !== 3)
+        );
+    }
+
+    public function getDiffLevel(): int
+    {
+        return (int)($this->count / $this->unit);
     }
 }

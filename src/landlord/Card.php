@@ -35,6 +35,8 @@ class Card
     const POINT = 'point';
     // 牌花色标记，不可修改
     const DECOR = 'decor';
+    // 号码标记，不可修改
+    const NUMBER = 'number';
 
     /**
      * @var int 此卡的编号，按规则是固定的；
