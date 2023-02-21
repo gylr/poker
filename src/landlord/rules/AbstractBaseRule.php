@@ -11,8 +11,6 @@
 declare(strict_types=1);
 namespace lai\poker\landlord\rules;
 
-use app\engine\Suits;
-use lai\poker\landlord\Card;
 use lai\poker\landlord\Decor;
 use lai\poker\landlord\Number;
 use lai\poker\landlord\Poker;
@@ -62,7 +60,7 @@ abstract class AbstractBaseRule implements RulesInterface
      */
     public function isBothJokers(): bool
     {
-        $suits = array_column($this->data, 'suit');
-        return 2 === count(array_filter($suits, fn($suit)=> $suit === Decor::JOKER));
+        $decors = array_column($this->data, 'decor');
+        return 2 === count(array_filter($decors, fn($decor)=> $decor === Decor::JOKER));
     }
 }

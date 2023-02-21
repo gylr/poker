@@ -12,23 +12,19 @@ declare (strict_types = 1);
 
 namespace lai\poker\landlord\rules;
 /**
- * four cards of the same rank.
- * A bomb can beat everything except a rocket, and a higher ranked bomb can beat a lower ranked one.
- * 4张同样的牌为炸
+ * a pair of jokers. It is the highest combination and beats everything else, including bombs.
+ * 双王火箭，比任何牌都大
  */
-class Bomb extends AbstractBaseRule
+class Rocket extends AbstractBaseRule
 {
-    protected string $label = 'b';
+    protected string $label = 'r';
 
     public function is(): bool
     {
-        if ($this->count !== 4){
+        if ($this->count !== 2){
             return false;
         }
-        $points = array_count_values(array_column($this->data, 'point'));
-        sort($points);
-        list($first) = $points;
-        return 4 === $first;
+        return $this->isBothJokers();
     }
 
 }
