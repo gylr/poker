@@ -12,21 +12,21 @@ declare (strict_types = 1);
 
 namespace lai\poker\landlord\rules;
 /**
- * two cards of the same rank, from three (low) up to two (high)
- * 对子
+ * three cards of the same rank
+ * 三张完全一样， 不含有飞机或三带
  */
-class Pair extends AbstractBaseRule
+class Triplet extends AbstractBaseRule
 {
-    protected string $label = 'p';
+    protected string $label = 't';
 
     public function is(): bool
     {
-        if ($this->count !== 2){
+        if ($this->count !== 3){
             return false;
         }
 
-        list($first, $second) = array_column($this->data, 'point');
-        return strcmp($first, $second) === 0;
+        list($first, $second, $third) = array_column($this->data, 'point');
+        return $first === $second && $second === $third;
     }
 
 }
