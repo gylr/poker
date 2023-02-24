@@ -33,6 +33,11 @@ abstract class AbstractBaseRule implements RulesInterface
         $this->data  = Poker::create($this->numbers)->handle()->getData();
     }
 
+    public static function create($numbers = []): self
+    {
+        return new static($numbers);
+    }
+
     public function get(): array
     {
         return $this->numbers;

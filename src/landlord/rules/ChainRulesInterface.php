@@ -12,17 +12,13 @@ declare (strict_types = 1);
 
 namespace lai\poker\landlord\rules;
 
-/**
- * 空规则，出牌不正常时，可用
- * 所有规则中，放最后一个进行验证
- */
-class None extends AbstractBaseRule
+interface ChainRulesInterface
 {
-    protected string $label = 'no';
+    public function handle(): self;
 
-    public function is(): bool
-    {
-        return true;
-    }
+    public function setNext($next);
 
+    public function handleNext();
+
+    public function get(): ?RulesInterface;
 }
