@@ -23,9 +23,9 @@ use lai\poker\landlord\Card;
  * Also a quadplex set can be beaten by a bomb made of lower ranked cards.
  * 四带二或四带二对，不允许出现双王
  */
-class Quadplex extends AbstractBaseRule
+class QuadplexPairs extends AbstractBaseRule
 {
-    protected string $label = 'q';
+    protected string $label = 'qp';
 
     public function is(): bool
     {
@@ -42,11 +42,11 @@ class Quadplex extends AbstractBaseRule
             return false;
         }
         list($first, $second, $third) = $count_values;
-        // 四带二单
-        if ($this->count === 6){
-            return $first === 1 && $second === 1 && $third === 4;
+        // 四带二对
+        if ($this->count === 8){
+            $this->label = 'qp'; // 表示四带二对
+            return $first === 2 && $second === 2 && $third === 4;
         }
-
         return false;
     }
 

@@ -28,13 +28,11 @@ class TripletWithOne extends AbstractBaseRule
         if ($this->count !== 4){
             return false;
         }
-        $points = array_column($this->data, Card::POINT);
-        $count_values = array_count_values($points);
+        $count_values = $this->pointCountValues();
         // 只有两个不同的数字存在
         if (count($count_values) !== 2){
             return false;
         }
-        sort($count_values);
         list($first, $second) = $count_values;
         return $first === 1 && $second === 3;
     }

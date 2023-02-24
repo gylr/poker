@@ -69,4 +69,12 @@ abstract class AbstractBaseRule implements RulesInterface
         $decors = array_column($this->data, Card::DECOR);
         return 2 === count(array_filter($decors, fn($decor)=> $decor === Decor::JOKER));
     }
+
+    public function pointCountValues(): array
+    {
+        $points = array_column($this->data, Card::POINT);
+        $count_values = array_count_values($points);
+        sort($count_values);
+        return $count_values;
+    }
 }

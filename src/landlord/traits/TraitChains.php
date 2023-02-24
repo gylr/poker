@@ -16,6 +16,7 @@ use lai\poker\landlord\rules\Bomb;
 use lai\poker\landlord\rules\None;
 use lai\poker\landlord\rules\Pair;
 use lai\poker\landlord\rules\Quadplex;
+use lai\poker\landlord\rules\QuadplexPairs;
 use lai\poker\landlord\rules\Rocket;
 use lai\poker\landlord\rules\Sequence;
 use lai\poker\landlord\rules\SequencePair;
@@ -57,6 +58,7 @@ trait TraitChains
             TripletWithOne::create($this->numbers),
             TripletWithPair::create($this->numbers),
             Quadplex::create($this->numbers),
+            QuadplexPairs::create($this->numbers),
             None::create([])  // 关系链的原因，该规则放最后一个
         ];
     }

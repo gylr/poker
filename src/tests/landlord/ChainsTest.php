@@ -147,10 +147,6 @@ class ChainsTest extends TestCase
         $class = Chains::create($numbers)->handle()->get();
         $this->assertInstanceOf(Quadplex::class, $class,'当为Quadplex实例');
 
-        $numbers = [1,2,3,4,9,10,13,14];
-        $class = Chains::create($numbers)->handle()->get();
-        $this->assertInstanceOf(Quadplex::class, $class,'当为Quadplex实例');
-
         $numbers = [1,2,3,4,51,52];
         $class = Chains::create($numbers)->handle()->get();
         $this->assertInstanceOf(None::class, $class,'当为None实例');

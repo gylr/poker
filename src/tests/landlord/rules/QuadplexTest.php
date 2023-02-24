@@ -42,13 +42,4 @@ class QuadplexTest extends TestCase
         $this->assertEquals('q', $obj->getLabel(), '该规则标签为q');
         $this->assertFalse($obj->is(), '双王执行is()返回false');
     }
-
-    public function testAttachPairs()
-    {
-        $numbers = [1,2,3,4,9,10,13,14];
-        $obj = new Quadplex($numbers);
-        $this->assertTrue($obj->is(), '该序列is()返回true');
-        $this->assertEquals(8, $obj->getCount(), '纸牌张数为8');
-        $this->assertEquals('qp', $obj->getLabel(), '该规则标签为qp');
-    }
 }
