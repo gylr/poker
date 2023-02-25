@@ -90,9 +90,6 @@ trait TraitSequence
         if (!$this->isSequence()){
             return false;
         }
-//        if (count($this->levels) < 1) {
-//            return false;
-//        }
         $this->unit = 3;
         return $this->isLevelsSumEqual();
     }
@@ -106,7 +103,7 @@ trait TraitSequence
         $levels = array_column($this->data, Card::LEVEL);
         $number_to_level = array_column($this->data, Card::LEVEL,Card::NUMBER);
         // 三联纸牌 level => count
-        $triplets = array_filter(array_count_values($levels),fn($count) => $count === 3);
+        $triplets = array_filter(array_count_values($levels), fn($count) => $count === 3);
         return array_keys(array_filter($number_to_level, fn($level) => isset($triplets[$level])));
     }
 

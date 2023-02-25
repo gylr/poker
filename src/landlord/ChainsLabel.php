@@ -36,7 +36,8 @@ class ChainsLabel implements ChainRulesInterface
 
     public static function create($label = ''): self
     {
-        return new self($label);
+        $self = new static($label);
+        return \WeakReference::create($self)->get();
     }
 
     public function handle(): self

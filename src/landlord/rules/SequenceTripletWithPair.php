@@ -12,7 +12,6 @@ declare (strict_types = 1);
 
 namespace lai\poker\landlord\rules;
 
-use lai\poker\landlord\Card;
 use lai\poker\landlord\traits\TraitSequence;
 
 /**
@@ -21,7 +20,7 @@ use lai\poker\landlord\traits\TraitSequence;
  * The pairs must be different in rank from each other and from all the triplets.
  * Although triplets of twos cannot be included, twos can be attached.
  * Note that attached single cards and attached pairs cannot be mixed - for example 3-3-3-4-4-4-6-7-7 is not valid.
- * 三带一对，不含双王，不含有炸
+ * 三带一对，飞机，不含双王，不含有炸，可含有2
  */
 class SequenceTripletWithPair extends AbstractBaseRule
 {
@@ -38,20 +37,16 @@ class SequenceTripletWithPair extends AbstractBaseRule
         if ($this->isBothJokers()){
             return false;
         }
-        // 找到三带二顺中的三顺，进行后续的判断
-        $levels = array_column($this->data, Card::LEVEL);
-        $levels_counts = array_count_values(array_count_values($levels));
-        sort($levels_counts);
-        list($first, $second) = $levels_counts;
-        //表示个数不匹配
-        if ($first !== $second || count($levels_counts) !== 2){
+        // 含有炸弹
+        if ($this->isContainBomb()) {
             return false;
         }
-
-        $class = new self($this->prepareTripletNumbers());
+        // 三联的数字集合，并判断是否是顺子
+        $class = self::create($this->prepareTripletNumbers());
         if (!$class->isSequenceTripletNumbers()){
             return false;
         }
+
         $this->generateAttachCount();
         // 层级差跟附加数量一致为合法，且反向count值保持一致为合法
         $diff_level = $class->getDiffLevel();

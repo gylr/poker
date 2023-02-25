@@ -60,4 +60,13 @@ class SequenceTripletWithOneTest extends TestCase
         $this->assertEquals('sto', $obj->getLabel(), '该规则标签为sto');
         $this->assertFalse($obj->is(), '重复了，该序列is()返回false');
     }
+
+    public function testBomb()
+    {
+        $numbers = [2,3,4,6,7,8,9,10,12,14,15,16,45,46,47,48];
+        $obj = new SequenceTripletWithOne($numbers);
+        $this->assertEquals(16, $obj->getCount(), '纸牌张数为16');
+        $this->assertEquals('sto', $obj->getLabel(), '该规则标签为sto');
+        $this->assertFalse($obj->is(), '数量太多is()返回false');
+    }
 }

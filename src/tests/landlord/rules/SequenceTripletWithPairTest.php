@@ -60,4 +60,22 @@ class SequenceTripletWithPairTest extends TestCase
         $this->assertEquals('stp', $obj->getLabel(), '该规则标签为stp');
         $this->assertFalse($obj->is(), '重复了，该序列is()返回false');
     }
+
+    public function testMoreJump()
+    {
+        $numbers = [1,2,3,5,6,7,13,14,15,17,18,21,22,25,26];
+        $obj = new SequenceTripletWithPair($numbers);
+        $this->assertEquals(15, $obj->getCount(), '纸牌张数为15');
+        $this->assertEquals('stp', $obj->getLabel(), '该规则标签为stp');
+        $this->assertFalse($obj->is(), '数量太多is()返回false');
+    }
+
+    public function testBomb()
+    {
+        $numbers = [1,2,3,5,6,7,13,14,15,16];
+        $obj = new SequenceTripletWithPair($numbers);
+        $this->assertEquals(10, $obj->getCount(), '纸牌张数为10');
+        $this->assertEquals('stp', $obj->getLabel(), '该规则标签为stp');
+        $this->assertFalse($obj->is(), '数量太多is()返回false');
+    }
 }

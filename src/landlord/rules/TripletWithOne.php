@@ -12,8 +12,6 @@ declare (strict_types = 1);
 
 namespace lai\poker\landlord\rules;
 
-use lai\poker\landlord\Card;
-
 /**
  *  a triplet with any single card added, for example 6-6-6-8.
  * These rank according to the rank of the triplet - so for example 9-9-9-3 beats 8-8-8-A.

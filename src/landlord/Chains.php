@@ -33,7 +33,8 @@ class Chains implements ChainRulesInterface
 
     public static function create($numbers = []): self
     {
-        return new self($numbers);
+        $self = new static($numbers);
+        return \WeakReference::create($self)->get();
     }
 
     public function handle(): self

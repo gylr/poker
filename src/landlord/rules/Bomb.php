@@ -11,7 +11,6 @@
 declare (strict_types = 1);
 
 namespace lai\poker\landlord\rules;
-use lai\poker\landlord\Card;
 
 /**
  * four cards of the same rank.
@@ -27,9 +26,8 @@ class Bomb extends AbstractBaseRule
         if ($this->count !== 4){
             return false;
         }
-        $points = array_count_values(array_column($this->data, Card::POINT));
-        sort($points);
-        list($first) = $points;
+        $count_values = $this->pointCountValues();
+        list($first) = $count_values;
         return 4 === $first;
     }
 

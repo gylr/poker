@@ -12,8 +12,6 @@ declare (strict_types = 1);
 
 namespace lai\poker\landlord\rules;
 
-use lai\poker\landlord\Card;
-
 /**
  * there are two types: a quad with two single cards of different ranks attached,
  * such as 6-6-6-6-8-9, or a quad with two pairs of different ranks attached, such as J-J-J-J-9-9-Q-Q.
@@ -46,7 +44,6 @@ class Quadplex extends AbstractBaseRule
         if ($this->count === 6){
             return $first === 1 && $second === 1 && $third === 4;
         }
-
         return false;
     }
 

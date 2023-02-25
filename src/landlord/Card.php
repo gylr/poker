@@ -66,7 +66,8 @@ class Card
 
     public static function create($number): self
     {
-        return new self($number);
+        $self = new static($number);
+        return \WeakReference::create($self)->get();
     }
 
     protected function parse()

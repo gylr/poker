@@ -51,4 +51,31 @@ class SequenceTripletTest extends TestCase
         $this->assertEquals('st', $obj->getLabel(), '该规则标签为st');
         $this->assertFalse($obj->is(), '该序列is()返回false');
     }
+
+    public function testMoreJump()
+    {
+        $numbers = [1,2,3,9,10,11];
+        $obj = new SequenceTriplet($numbers);
+        $this->assertEquals(6, $obj->getCount(), '纸牌张数为6');
+        $this->assertEquals('st', $obj->getLabel(), '该规则标签为st');
+        $this->assertFalse($obj->is(), '该序列is()返回false');
+    }
+
+    public function testJustOne()
+    {
+        $numbers = [49,50,52];
+        $obj = new SequenceTriplet($numbers);
+        $this->assertEquals(3, $obj->getCount(), '纸牌张数为3');
+        $this->assertEquals('st', $obj->getLabel(), '该规则标签为st');
+        $this->assertFalse($obj->is(), '该序列is()返回false');
+    }
+
+    public function testContainNumberTwo()
+    {
+        $numbers = [45,46,17,49,50,52];
+        $obj = new SequenceTriplet($numbers);
+        $this->assertEquals(6, $obj->getCount(), '纸牌张数为6');
+        $this->assertEquals('st', $obj->getLabel(), '该规则标签为st');
+        $this->assertFalse($obj->is(), '该序列is()返回false');
+    }
 }

@@ -12,7 +12,6 @@ declare (strict_types = 1);
 
 namespace lai\poker\landlord\rules;
 
-
 /**
  * Class Single
  * ranking from three (low) up to red joker (high) as explained above

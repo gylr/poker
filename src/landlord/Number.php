@@ -34,7 +34,8 @@ class Number
 
     public static function create($numbers): self
     {
-        return new self($numbers);
+        $self = new static($numbers);
+        return \WeakReference::create($self)->get();
     }
 
     protected function parse($numbers): void

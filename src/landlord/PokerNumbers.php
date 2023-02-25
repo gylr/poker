@@ -37,7 +37,8 @@ class PokerNumbers
 
     public static function create($numbers = []): self
     {
-        return new self($numbers);
+        $self = new static($numbers);
+        return \WeakReference::create($self)->get();
     }
 
     public function getNumbers(): array

@@ -33,9 +33,10 @@ abstract class AbstractBaseRule implements RulesInterface
         $this->data  = Poker::create($this->numbers)->handle()->getData();
     }
 
-    public static function create($numbers = []): self
+    public static function create($numbers = []): static
     {
-        return new static($numbers);
+        $self = new static($numbers);
+        return \WeakReference::create($self)->get();
     }
 
     public function get(): array
@@ -68,6 +69,13 @@ abstract class AbstractBaseRule implements RulesInterface
     {
         $decors = array_column($this->data, Card::DECOR);
         return 2 === count(array_filter($decors, fn($decor)=> $decor === Decor::JOKER));
+    }
+
+    public function isContainBomb(): bool
+    {
+        $points = array_column($this->data, Card::POINT, Card::NUMBER);
+        $count_values = array_count_values($points);
+        return count(array_filter($count_values, fn($count) => $count === 4)) > 0;
     }
 
     public function pointCountValues(): array

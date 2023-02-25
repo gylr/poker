@@ -12,8 +12,6 @@ declare (strict_types = 1);
 
 namespace lai\poker\landlord\rules;
 
-use lai\poker\landlord\Card;
-
 /**
  * a triplet with a pair added, like a full house in poker,
  * the ranking being determined by the rank of the triplet - for example Q-Q-Q-6-6 beats 10-10-10-K-K.
